@@ -3,14 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AddBillComponent } from './add-bill/add-bill.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BillTemplateComponent } from './bill-template/bill-template.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddBillComponent,
+    BillTemplateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

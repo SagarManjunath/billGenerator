@@ -1,0 +1,106 @@
+<div class="container" id="couponPage" #couponPage>
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="invoice-title">
+                            <h4 class="float-end font-size-15">Invoice #{{billData.billNo}} <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+                            <div class="mb-4">
+                               <h2 class="mb-1 text-muted">{{billData.companyname}}</h2>
+                            </div>
+                            <div class="text-muted">
+                                <p class="mb-1">{{billData.companyAddress}}</p>                               
+                                <p><i class="uil uil-phone me-1"></i> {{billData.companyMobile}}</p>
+                            </div>
+                        </div>
+    
+                        <hr class="my-4">
+    
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="text-muted">
+                                    <h5 class="font-size-16 mb-3">Billed To:</h5>
+                                    <h5 class="font-size-15 mb-2">{{billData.customerName }}</h5>
+                                    <p class="mb-1">{{billData.customerAddress}}</p>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-sm-6">
+                                <div class="text-muted text-sm-end">
+                                    <div>
+                                        <h5 class="font-size-15 mb-1">Invoice No:</h5>
+                                        <p>#{{billData.billNo}}</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h5 class="font-size-15 mb-1">Invoice Date:</h5>
+                                        <p>{{billData.billDate}}</p>
+                                    </div>                                  
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        
+                        <div class="py-2">
+                            <h5 class="font-size-15">Order Summary</h5>
+    
+                            <div class="table-responsive">
+                                <table class="table align-middle table-nowrap table-centered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 70px;">No.</th>
+                                            <th>Item</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th class="text-end" style="width: 120px;">Total</th>
+                                        </tr>
+                                    </thead><!-- end thead -->
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">01</th>
+                                            <td>
+                                                <div>
+                                                    <h5 class="text-truncate font-size-14 mb-1">{{billData.pickupLocation }}</h5>
+                                                    <p class="text-muted mb-0">To</p>
+                                                    <h5 class="text-truncate font-size-14 mb-1">{{billData.dropLocation }}</h5>
+                                                </div>
+                                            </td>
+                                            <td>{{billData.billAmount }}</td>
+                                            <td>1</td>
+                                            <td class="text-end">{{billData.billAmount}}</td>
+                                        </tr>
+                                        <!-- end tr -->
+                                   
+                                        <!-- end tr -->
+                                        <tr>
+                                            <th scope="row" colspan="4" class="text-end">Sub Total</th>
+                                            <td class="text-end">{{billData.billAmount}}</td>
+                                        </tr>
+                                        <!-- end tr -->
+                                      
+                                        <tr>
+                                            <th scope="row" colspan="4" class="border-0 text-end">
+                                                Other charges</th>
+                                            <td class="border-0 text-end">{{billData.otherChargers }}</td>
+                                        </tr>
+                                        <!-- end tr -->
+                                        <tr>
+                                            <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                            <td class="border-0 text-end"><h4 class="m-0 fw-semibold">{{billData.totalAmount}}</h4></td>
+                                        </tr>
+                                        <!-- end tr -->
+                                    </tbody><!-- end tbody -->
+                                </table><!-- end table -->
+                            </div><!-- end table responsive -->
+                            <div class="d-print-none mt-4">
+                                <div class="float-end">
+                                    <button class="btn" [routerLink]="'/'" >Cancel</button>                                     
+                                    <button class="btn btn-primary" (click)="openPDF()">Submit</button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div>
+    </div>
