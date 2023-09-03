@@ -1,5 +1,5 @@
 <div class="container" id="couponPage" #couponPage>
-    <div class="row">
+    <div class="row" #screen>
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -23,6 +23,10 @@
                                     <h5 class="font-size-15 mb-2">{{billData.customerName }}</h5>
                                     <p class="mb-1">{{billData.customerAddress}}</p>
                                 </div>
+                                <div class="mt-4">
+                                    <h5 class="font-size-15 mb-1">Car No:</h5>
+                                    <p>{{billData.carNo}}</p>
+                                </div> 
                             </div>
                             <!-- end col -->
                             <div class="col-sm-6">
@@ -34,7 +38,12 @@
                                     <div class="mt-4">
                                         <h5 class="font-size-15 mb-1">Invoice Date:</h5>
                                         <p>{{billData.billDate}}</p>
-                                    </div>                                  
+                                    </div> 
+                                    <div class="mt-4">
+                                        <h5 class="font-size-15 mb-1">Driver Name:</h5>
+                                        <p>{{billData.driverName}}</p>
+                                    </div>  
+                                                                     
                                 </div>
                             </div>
                             <!-- end col -->
@@ -92,15 +101,21 @@
                                     </tbody><!-- end tbody -->
                                 </table><!-- end table -->
                             </div><!-- end table responsive -->
-                            <div class="d-print-none mt-4">
-                                <div class="float-end">
-                                    <button class="btn" [routerLink]="'/'" >Cancel</button>                                     
-                                    <button class="btn btn-primary" (click)="openPDF()">Submit</button> 
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
             </div><!-- end col -->
         </div>
     </div>
+    <div class="d-print-none mt-4 btns">
+        <div>
+            <button class="btn" [routerLink]="'/'" >Cancel</button>                                     
+            <button class="btn btn-primary" (click)="openPDF()">Download PDF</button> 
+            <button class="btn btn-primary" (click)="clickToCapture()" style="margin: 5px;">Download Imgae</button> 
+        </div>
+    </div>
+    <div id="download">
+        <img #canvas>
+        <a #downloadLink></a>
+      </div>

@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prodBuild":"ng build --configuration production",
+    "firebaseDeploy":"firebase deploy -m 'commit message' --only hosting"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +20,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

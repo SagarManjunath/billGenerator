@@ -31,6 +31,18 @@
                 <input type="text" class="form-control"
                  id="billDate" formControlName = "billDate">            
              </div>
+
+             <div class="form-group">
+               <label for="driverName">Driver name</label>
+               <input type="text" class="form-control" 
+               id="driverName" formControlName = "driverName">
+            </div>
+
+            <div class="form-group">
+               <label for="carNo">Car Number</label>
+               <input type="text" class="form-control"
+                id="carNo" formControlName = "carNo">            
+            </div>
    
              <div class="form-group">
                 <label for="customerName">Customer Name</label>
@@ -58,18 +70,18 @@
    
              <div class="form-group">
                 <label for="email">Bill Amount</label>
-                <input type="text" class="form-control" 
-                id="billAmount" formControlName = "billAmount">
+                <input type="number" class="form-control" 
+                id="billAmount" formControlName = "billAmount" (change)="gettotalBill()">
              </div>
              <div class="form-group">
-                <label for="username">Other Chargers</label>
-                <input type="text" class="form-control"
-                 id="otherChargers" formControlName = "otherChargers">            
+                <label for="username">Other Charges</label>
+                <input type="number" class="form-control"
+                 id="otherChargers" formControlName = "otherChargers" (change)="gettotalBill()">            
              </div>
    
              <div class="form-group">
                 <label for="email">Total Amount</label>
-                <input type="text" class="form-control" 
+                <input type="number" class="form-control" 
                 id="totalAmount" formControlName = "totalAmount">
              </div>
            <span class="help-block" *ngIf="!SignupForm.valid && SignupForm.touched">

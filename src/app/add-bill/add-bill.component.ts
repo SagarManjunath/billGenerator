@@ -15,20 +15,27 @@ export class AddBillComponent implements OnInit {
 
   ngOnInit(): void {
     this.SignupForm = this.formBuilder.group({
-        'companyname':['Gowri tours & travels'],
+        'companyname':['Gowri Tours & Travels'],
         'companyAddress':['Ganaganagar, Bangalore'],
-        'companyMobile':['987654321'],
+        'companyMobile':['7259360406'],
         'billNo':['654454'],
-        'billDate':[''],   
+        'billDate':[''], 
+        'driverName':[''] ,
+        'carNo':[''],
         'customerName':[''],
         'customerAddress':[''],
         'pickupLocation':[''],
         'dropLocation':[''],
-        'billAmount':[''],
-        'otherChargers':[''],
-        'totalAmount':['']
+        'billAmount':[0],
+        'otherChargers':[0],
+        'totalAmount':[0]
     });
     
+  }
+
+  gettotalBill(){
+    let totalAmount = Number(this.SignupForm.get('billAmount')?.value) + Number(this.SignupForm.get('otherChargers')?.value);
+    this.SignupForm.get('totalAmount')?.patchValue(totalAmount);
   }
 
   onSubmit(){
