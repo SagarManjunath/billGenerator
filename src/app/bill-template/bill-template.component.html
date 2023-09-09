@@ -3,20 +3,24 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="invoice-title">
-                            <h4 class="float-end font-size-15">Invoice #{{billData.billNo}} <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
-                            <div class="mb-4">
-                               <h2 class="mb-1 text-muted">{{billData.companyname}}</h2>
-                            </div>
-                            <div class="text-muted">
-                                <p class="mb-1">{{billData.companyAddress}}</p>                               
-                                <p><i class="uil uil-phone me-1"></i> {{billData.companyMobile}}</p>
-                            </div>
+                        <div class="headerBox">                     
+                        <div class="comRow">
+                            <div><img style="width: 100px;" src="../../assets/logo.jpg" /></div>
+                            <div class="comName">{{billData.companyname}}</div>
                         </div>
+                        <div class="address">
+                            <div>{{billData.companyAddress}}</div>
+                            <div>{{billData.companyMobile}}</div>
+                            
+                        </div>
+                        <div class="flexRow">
+                            <div></div>
+                            <div>Invoice No:{{billData.billNo}}</div>
+                        </div>
+                    </div>  
+                        <!-- <hr class="my-4"> -->
     
-                        <hr class="my-4">
-    
-                        <div class="row">
+                        <div class="row billBox">
                             <div class="col-sm-6">
                                 <div class="text-muted">
                                     <h5 class="font-size-16 mb-3">Billed To:</h5>
@@ -27,14 +31,14 @@
                                     <h5 class="font-size-15 mb-1">Car No:</h5>
                                     <p>{{billData.carNo}}</p>
                                 </div> 
+                                <div class="mt-4" *ngIf="billData.totalKms">
+                                    <h5 class="font-size-15 mb-1">Rate/KM:</h5>
+                                    <p>{{billData.ratePerKm | currency:'INR'}}</p>
+                                </div>  
                             </div>
                             <!-- end col -->
                             <div class="col-sm-6">
-                                <div class="text-muted text-sm-end">
-                                    <div>
-                                        <h5 class="font-size-15 mb-1">Invoice No:</h5>
-                                        <p>#{{billData.billNo}}</p>
-                                    </div>
+                                <div class="text-muted text-sm-end">                                    
                                     <div class="mt-4">
                                         <h5 class="font-size-15 mb-1">Invoice Date:</h5>
                                         <p>{{billData.billDate}}</p>
@@ -43,6 +47,11 @@
                                         <h5 class="font-size-15 mb-1">Driver Name:</h5>
                                         <p>{{billData.driverName}}</p>
                                     </div>  
+                                    <div class="mt-4" *ngIf="billData.totalKms">
+                                        <h5 class="font-size-15 mb-1">Total KMS:</h5>
+                                        <p>{{billData.totalKms}} KMS</p>
+                                    </div>  
+                                    
                                                                      
                                 </div>
                             </div>
@@ -50,22 +59,31 @@
                         </div>
                         <!-- end row -->
                         
-                        <div class="py-2">
+                        <div class="py-2 billBox">
                             <h5 class="font-size-15">Order Summary</h5>
     
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-centered mb-0">
-                                    <thead>
+                                    <thead *ngIf="!billData.hourlyCharges">
                                         <tr>
                                             <th style="width: 70px;">No.</th>
-                                            <th>Item</th>
+                                            <th>Travel details</th>
                                             <th>Price</th>
                                             <th>Quantity</th>
                                             <th class="text-end" style="width: 120px;">Total</th>
                                         </tr>
                                     </thead><!-- end thead -->
-                                    <tbody>
+                                    <thead *ngIf="billData.hourlyCharges">
                                         <tr>
+                                            <th style="width: 70px;">No.</th>
+                                            <th>Travel details</th>
+                                            <th></th>
+                                            <th>Expense Details</th>
+                                            <th class="text-end" style="width: 120px;">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="!billData.hourlyCharges">
                                             <th scope="row">01</th>
                                             <td>
                                                 <div>
@@ -74,28 +92,64 @@
                                                     <h5 class="text-truncate font-size-14 mb-1">{{billData.dropLocation }}</h5>
                                                 </div>
                                             </td>
-                                            <td>{{billData.billAmount }}</td>
-                                            <td>1</td>
-                                            <td class="text-end">{{billData.billAmount}}</td>
+                                            <td *ngIf="billData.billAmount">{{billData.billAmount }}</td>
+                                            <td *ngIf="billData.billAmount">1</td>
+                                            <td class="text-end" *ngIf="billData.billAmount">{{billData.billAmount}}</td>
+
+                                            <td *ngIf="billData.totalKms">{{billData.ratePerKm }}</td>
+                                            <td *ngIf="billData.totalKms">{{billData.totalKms }}</td>
+                                            <td class="text-end" *ngIf="billData.totalKms">{{billData.ratePerKm*billData.totalKms }}</td>
                                         </tr>
                                         <!-- end tr -->
+
+                                        <tr *ngIf="billData.hourlyCharges">
+                                            <th scope="row">01</th>
+                                            <td>
+                                                <div>
+                                                    <h5 class="text-truncate font-size-14 mb-1">{{billData.pickupLocation }}</h5>
+                                                    <p class="text-muted mb-0">To</p>
+                                                    <h5 class="text-truncate font-size-14 mb-1">{{billData.dropLocation }}</h5>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <div>{{billData?.hours}} hrs - {{billData?.hrsKMS}} KMS</div>
+                                                <div>{{billData?.extraHours}} hrs * {{billData?.extraHoursQuantity | currency :'INR'}} </div>
+                                                <div>{{billData?.extraKMS}} KMS * {{billData?.extraKMSQuantity | currency :'INR'}} </div>
+                                            </td>
+                                            <td class="text-end" >
+                                                <div>{{billData?.hourlyCharges | currency :'INR'}}</div>
+                                                <div>{{billData?.extraHoursCharges | currency :'INR'}}</div>
+                                                <div>{{billData?.extraKMSCharges | currency :'INR'}}</div>
+                                            </td>
+                                           
+                                        </tr>
                                    
                                         <!-- end tr -->
                                         <tr>
                                             <th scope="row" colspan="4" class="text-end">Sub Total</th>
-                                            <td class="text-end">{{billData.billAmount}}</td>
+                                            <td class="text-end">{{billData.billAmount | currency:'INR'}}</td>
                                         </tr>
                                         <!-- end tr -->
+                                        <tr>
+                                            <th scope="row" colspan="4" class="text-end">Toll Charges</th>
+                                            <td class="text-end">{{billData.tollCharges | currency:'INR'}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row" colspan="4" class="text-end">Bata Charges</th>
+                                            <td class="text-end">{{billData.bataCharges | currency:'INR'}}</td>
+                                        </tr>
                                       
                                         <tr>
                                             <th scope="row" colspan="4" class="border-0 text-end">
                                                 Other charges</th>
-                                            <td class="border-0 text-end">{{billData.otherChargers }}</td>
+                                            <td class="border-0 text-end">{{billData.otherChargers | currency:'INR'}}</td>
                                         </tr>
                                         <!-- end tr -->
                                         <tr>
                                             <th scope="row" colspan="4" class="border-0 text-end">Total</th>
-                                            <td class="border-0 text-end"><h4 class="m-0 fw-semibold">{{billData.totalAmount}}</h4></td>
+                                            <td class="border-0 text-end"><h4 class="m-0 fw-semibold">{{billData.totalAmount | currency:'INR'}}</h4></td>
                                         </tr>
                                         <!-- end tr -->
                                     </tbody><!-- end tbody -->

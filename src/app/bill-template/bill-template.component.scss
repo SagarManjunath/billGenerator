@@ -20,3 +20,35 @@ body{margin-top:20px;
     display: flex;
     justify-content: center;
 }
+.comName{
+    font-size: 32px;
+    font-weight: 600;
+    color: #167fe9;
+}
+.comRow{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.flexRow{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 50px;
+}
+.address{
+    width: 45%;
+    position: relative;
+    bottom: 28px;
+    left: 100px;
+}
+.headerBox{
+    border: 2px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+.billBox{
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}

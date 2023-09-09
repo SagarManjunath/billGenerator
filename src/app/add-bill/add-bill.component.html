@@ -67,17 +67,114 @@
                 <input type="text" class="form-control"
                  id="dropLocation" formControlName = "dropLocation">            
              </div>
+             <div class="RateKM">
+               <label>OutStation</label>
+               <div class="form-group">
+                  <label for="totalKms">Total KMs</label>
+                  <input type="number" class="form-control"
+                  id="totalKms" formControlName = "totalKms" (change)="gettotalBill()">            
+               </div>
+
+               <div class="form-group">
+                  <label for="ratePerKm">Rate/KM</label>
+                  <input type="number" class="form-control"
+                  id="ratePerKm" formControlName = "ratePerKm" (change)="gettotalBill()">            
+               </div>
+
+               <div class="form-group">
+                  <label for="tollCharges">Toll Charges</label>
+                  <input type="number" class="form-control" 
+                  id="tollCharges" formControlName = "tollCharges" (change)="gettotalBill()">
+               </div>
+
+               <div class="form-group">
+                  <label for="bataCharges">Bata Charges</label>
+                  <input type="number" class="form-control" 
+                  id="bataCharges" formControlName = "bataCharges" (change)="gettotalBill()">
+               </div>
+            </div>
+            <div class="pickUp">
+               <label>Pick and Drop</label>
+               <div class="form-group">
+                  <label for="billAmount">Bill Amount</label>
+                  <input type="number" class="form-control" 
+                  id="billAmount" formControlName = "billAmount" (change)="gettotalBill()">
+               </div>
    
-             <div class="form-group">
-                <label for="email">Bill Amount</label>
-                <input type="number" class="form-control" 
-                id="billAmount" formControlName = "billAmount" (change)="gettotalBill()">
-             </div>
-             <div class="form-group">
-                <label for="username">Other Charges</label>
-                <input type="number" class="form-control"
-                 id="otherChargers" formControlName = "otherChargers" (change)="gettotalBill()">            
-             </div>
+                <div class="form-group">
+                   <label for="username">Other Charges</label>
+                   <input type="number" class="form-control"
+                    id="otherChargers" formControlName = "otherChargers" (change)="gettotalBill()">            
+                </div>
+            </div>
+
+            <div class="hourlyRental">
+               <label>Hourly Rental</label>
+               <div style="display: flex;">
+                  <div class="form-group" style="margin: 5px;">
+                     <label for="hours">Hours</label>
+                     <input type="number" class="form-control" 
+                     id="hours" formControlName = "hours">
+                  </div>
+      
+                   <div class="form-group" style="margin: 5px;">
+                      <label for="hrsKMS">KMs</label>
+                      <input type="number" class="form-control"
+                       id="hrsKMS" formControlName = "hrsKMS">            
+                   </div>
+   
+                   <div class="form-group" style="margin: 5px;">
+                     <label for="hourlyCharges">Total charges</label>
+                     <input type="number" class="form-control"
+                      id="hourlyCharges" formControlName = "hourlyCharges" (change)="gettotalBill()">            
+                  </div>
+               </div>
+
+               <div style="display: flex;">
+                  <div class="form-group" style="margin: 5px;">
+                     <label for="extraHours">Extra Hours</label>
+                     <input type="number" class="form-control" 
+                     id="extraHours" formControlName = "extraHours" (change)="getExtraHorsTotalBill()">
+                  </div>
+
+                  <div class="form-group" style="margin: 5px;">
+                     <label for="extraHoursQuantity">Price/hr</label>
+                     <input type="number" class="form-control"
+                      id="extraHoursQuantity" formControlName = "extraHoursQuantity" (change)="getExtraHorsTotalBill()">            
+                  </div> 
+      
+                   <div class="form-group" style="margin: 5px;">
+                      <label for="extraHoursCharges" style="text-wrap: nowrap;">Extra hours charges</label>
+                      <input type="number" class="form-control"
+                       id="extraHoursCharges" formControlName = "extraHoursCharges">            
+                   </div>  
+                 
+               </div>
+
+               <div style="display: flex;">
+                  <div class="form-group" style="margin: 5px;">
+                     <label for="extraKMS">Extra KMS</label>
+                     <input type="number" class="form-control" 
+                     id="extraKMS" formControlName = "extraKMS"  (change)="getExtraKMSTotalBill()">
+                  </div>
+
+                  <div class="form-group" style="margin: 5px;">
+                     <label for="extraKMSQuantity">Price/km</label>
+                     <input type="number" class="form-control"
+                      id="extraKMSQuantity" formControlName = "extraKMSQuantity"  (change)="getExtraKMSTotalBill()">            
+                  </div> 
+      
+                   <div class="form-group" style="margin: 5px;">
+                      <label for="extraKMSCharges" style="text-wrap: nowrap;">Extra KMS Charges</label>
+                      <input type="number" class="form-control"
+                       id="extraKMSCharges" formControlName = "extraKMSCharges">            
+                   </div>  
+                 
+               </div>
+               
+            </div>
+           
+
    
              <div class="form-group">
                 <label for="email">Total Amount</label>

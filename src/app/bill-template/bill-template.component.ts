@@ -22,7 +22,7 @@ public billData:any;
     })
   //   this.billData = {
   //     "companyname": "Gowri Tours & Travels",
-  //     "companyAddress": "#392/14,LOKESH REDDY BUILDING,CELEBRATY PARADISE LAYOUT, DODDATHOGUR, ELECTRONIC CITY PHASE I, BANGALORE 560100",
+  //     "companyAddress": "#29,11th Cross, Lakshmayya block , Ganaganagar, Bangalore",
   //     "companyMobile": "+919008569653",
   //     "billNo": "654454",
   //     "billDate": "02/Sep/2023",
@@ -32,9 +32,22 @@ public billData:any;
   //     "customerAddress": "Bommanahalli",
   //     "pickupLocation": "e city",
   //     "dropLocation": "airport",
-  //     "billAmount": "2321",
-  //     "otherChargers": "30",
-  //     "totalAmount": "2351"
+  //     "totalKms":50,
+  //     "ratePerKm":10,
+  //     'tollCharges':100,
+  //     'bataCharges':300,
+  //     "billAmount": 0,
+  //     "otherChargers": 0,
+  //     "totalAmount": "2351",
+  //     "hours":8,
+  //     "hrsKMS":80,
+  //     "hourlyCharges":2300,
+  //     "extraHours":2,
+  //     "extraHoursQuantity":4,
+  //     "extraHoursCharges":100,
+  //     "extraKMS":10,
+  //     "extraKMSQuantity":2,
+  //     "extraKMSCharges":20
   // }
   }
 
