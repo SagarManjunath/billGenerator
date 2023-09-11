@@ -98,7 +98,7 @@
 
                                             <td *ngIf="billData.totalKms">{{billData.ratePerKm | currency :'INR'}}</td>
                                             <td *ngIf="billData.totalKms">{{billData.totalKms }}KMS</td>
-                                            <td class="text-end" *ngIf="billData.totalKms">{{billData.ratePerKm*billData.totalKms }}</td>
+                                            <td class="text-end" *ngIf="billData.totalKms">{{billData.ratePerKm*billData.totalKms  | currency :'INR'}}</td>
                                         </tr>
                                         <!-- end tr -->
 
