@@ -60,16 +60,16 @@
                         <!-- end row -->
                         
                         <div class="py-2 billBox">
-                            <h5 class="font-size-15">Order Summary</h5>
+                            <h5 class="font-size-15">Travel Summary</h5>
     
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-centered mb-0">
                                     <thead *ngIf="!billData.hourlyCharges">
                                         <tr>
                                             <th style="width: 70px;">No.</th>
-                                            <th>Travel details</th>
+                                            <th>Travel Details</th>
                                             <th>Price</th>
-                                            <th>Quantity</th>
+                                            <th>Travel Distance</th>
                                             <th class="text-end" style="width: 120px;">Total</th>
                                         </tr>
                                     </thead><!-- end thead -->
@@ -96,8 +96,8 @@
                                             <td *ngIf="billData.billAmount">1</td>
                                             <td class="text-end" *ngIf="billData.billAmount">{{billData.billAmount}}</td>
 
-                                            <td *ngIf="billData.totalKms">{{billData.ratePerKm }}</td>
-                                            <td *ngIf="billData.totalKms">{{billData.totalKms }}</td>
+                                            <td *ngIf="billData.totalKms">{{billData.ratePerKm | currency :'INR'}}</td>
+                                            <td *ngIf="billData.totalKms">{{billData.totalKms }}KMS</td>
                                             <td class="text-end" *ngIf="billData.totalKms">{{billData.ratePerKm*billData.totalKms }}</td>
                                         </tr>
                                         <!-- end tr -->
@@ -114,8 +114,8 @@
                                             <td></td>
                                             <td>
                                                 <div>{{billData?.hours}} hrs - {{billData?.hrsKMS}} KMS</div>
-                                                <div>{{billData?.extraHours}} hrs * {{billData?.extraHoursQuantity | currency :'INR'}} </div>
-                                                <div>{{billData?.extraKMS}} KMS * {{billData?.extraKMSQuantity | currency :'INR'}} </div>
+                                                <div>Extra hours {{billData?.extraHours}} hrs * {{billData?.extraHoursQuantity | currency :'INR'}} </div>
+                                                <div>Extra KMS {{billData?.extraKMS}} KMS * {{billData?.extraKMSQuantity | currency :'INR'}} </div>
                                             </td>
                                             <td class="text-end" >
                                                 <div>{{billData?.hourlyCharges | currency :'INR'}}</div>
