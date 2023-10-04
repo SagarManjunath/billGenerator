@@ -1,0 +1,22 @@
+@import url(https://db.onlinewebfonts.com/c/6e0719809c1f8f917ee75311f9013184?family=F25+Bank+Printer);
+.row1{
+    display: flex;
+    justify-content:space-between
+}
+.header{
+    border-bottom: 1px dashed;
+    border-top: 1px dashed;
+}
+.parent{
+    margin: 20px;
+    padding: 20px;
+    background: #e9ecef;
+    font-family: 'F25 Bank Printer', sans-serif;
+    background-image: url(../../assets/folderPaper.jpeg);
+}
+.eachRow{
+    margin: 10px;
+}
+label{
+    width: 10%;
+}

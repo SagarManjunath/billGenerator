@@ -1,0 +1,114 @@
+<div class="parent"  #screen>
+    <div class="row1">
+        <div>Et1GST No: 29ASMPK8134F1ZF</div>
+        <div>ESHWARI MEDICALS</div>
+        <div>DL . NO:KA-062-20/21-131288/89</div>
+    </div>
+    <div class="row1">
+        <div># 839/3 , NEAR -2ND BUS STOP, DAVANAGERE-577005</div>
+        <div>Ph:9448556698</div>
+    </div>
+    <div class="row1">
+        <div>Name: {{patientName}}</div>
+        <div>Bill No: {{billNo}}</div>
+    </div>
+    <div class="row1">
+        <div>Dr. {{doctorName}}</div>
+        <div>Date:{{billDate}}</div>
+    </div>
+    <table style="width:100%;font-size: 14px;">
+        <tr class="header">
+          <th>Item Name</th>
+          <th>MFR</th>
+          <th>Qty</th>
+          <th>Batch No</th>
+          <th>Exp Date</th>
+          <th>MRP</th>
+          <th>Value</th>
+        </tr>
+        <tr *ngFor="let item of medicineList">
+          <td>{{item.name}}</td>
+          <td>{{item.manufacture}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.batchNo}}</td>
+          <td>{{item.expDate}}</td>
+          <td>{{item.mrp}}</td>
+          <td>{{item.value}}</td>
+        </tr>
+       
+<!-- footer -->
+        <tr class="header">
+            <td>COMPOSITON TAX PAYBLE PERSON</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TOTAL</td>
+            <td>Rs.{{billTotal}}</td>
+        </tr>
+      
+      </table>
+</div>
+<div class="d-print-none mt-4 btns">
+    <div>
+        <button class="btn" [routerLink]="'/'" >Cancel</button>
+        <button class="btn btn-primary" (click)="clickToCapture()" style="margin: 5px;">Download Imgae</button> 
+    </div>
+</div>
+<div id="download">
+    <img #canvas>
+    <a #downloadLink></a>
+</div>
+<div>
+    <div class="eachRow">
+        <label for="patientName">Patient Name :</label>
+        <input [(ngModel)]="patientName" id="patientName" required>
+    </div>
+    <div class="eachRow">
+        <label for="doctorName">Doctor Name :</label>
+        <input [(ngModel)]="doctorName" id="doctorName" required>
+    </div>
+    <div class="eachRow">
+        <label for="billNo">Bill No:</label>
+        <input [(ngModel)]="billNo" id="billNo" required>
+    </div>
+    <div class="eachRow">
+        <label for="billDate">Bill Date :</label>
+        <input [(ngModel)]="billDate" id="billDate" required>
+    </div>
+    
+    <div>
+        <div class="eachRow">
+            <label for="MedicineName">Medicine Name :</label>
+            <input [(ngModel)]="medicine.name" id="MedicineName" required>
+        </div>
+        <div class="eachRow">
+            <label for="manufacture">manufacture:</label>
+            <input [(ngModel)]="medicine.manufacture" id="manufacture" required>
+        </div>
+        <div class="eachRow">
+            <label for="quantity">quantity:</label>
+            <input type="number" [(ngModel)]="medicine.quantity" id="quantity" required>
+        </div>
+        <div class="eachRow">
+            <label for="batchNo">batchNo :</label>
+            <input [(ngModel)]="medicine.batchNo" id="batchNo" required>
+        </div>
+        <div class="eachRow">
+            <label for="expDate">expDate :</label>
+            <input [(ngModel)]="medicine.expDate" id="expDate" required>
+        </div>
+        <div class="eachRow">
+            <label for="mrp">mrp:</label>
+            <input type="number" [(ngModel)]="medicine.mrp" id="mrp" required>
+        </div>
+        <!-- <div>
+            <label for="value">value :</label>
+            <input [(ngModel)]="medicine.value" id="value" required>
+        </div> -->
+    </div>
+    <button (click)="addToBill()">Add to Bill</button>
+    <button (click)="getTotalBill()">Get total bill</button>
+
+    
+</div>
