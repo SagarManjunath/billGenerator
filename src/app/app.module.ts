@@ -7,13 +7,15 @@ import { AddBillComponent } from './add-bill/add-bill.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BillTemplateComponent } from './bill-template/bill-template.component';
 import { MedicalBillTemplateComponent } from './medical-bill-template/medical-bill-template.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddBillComponent,
     BillTemplateComponent,
-    MedicalBillTemplateComponent
+    MedicalBillTemplateComponent,
+    PrescriptionComponent
   ],
   imports: [
     BrowserModule,

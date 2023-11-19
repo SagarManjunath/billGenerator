@@ -1,0 +1,119 @@
+<div>
+    <div class="page" #screen>
+        <div class="header">
+            <div>
+                <img src="../../assets/mfine_logo.png"  style="height: 150px;"/>
+            </div>
+            <div class="address">
+                <p>0000000000</p>
+                <p>mfine Healthcare</p>
+                <p>1245, 22nd Main Road, 13th Cross Rd,</p>
+                <p>Vanganahalli, 1st Sector, Vanganahalli, HSR</p>
+                <p>Layout, Bengaluru</p>
+                <p>Bengaluru, Karnataka 560102</p>
+            </div>
+        </div>
+        <div class="header">
+            <div>
+               <p>Name : {{patientName}}</p> 
+               <p>Age/Gender : {{age}}/{{gender}}</p> 
+            </div>
+            <div>
+               <p>Date: {{date}}</p>
+            </div>
+        </div>
+        <div>
+            <p>{{doctorName}}</p>
+        </div>
+        <div *ngIf="isChiefComplaintsRequired">
+            <div class="title">Chief Complaints</div>
+            <div class="description" *ngFor="let item of chiefComplaints">{{item}}</div>
+        </div>
+        <div *ngIf="isallergiesRequired">
+            <div class="title">Allergies</div>
+            <div class="description" *ngFor="let item of allergies">{{item}}</div>
+        </div>
+        <div *ngIf="isdiagnosisRequired">
+            <div class="title">Diagnosis</div>
+            <div class="description" *ngFor="let item of diagnosis">{{item}}</div>
+        </div>
+        <div *ngIf="isdiagnosticTestRequired">
+            <div class="title">Diagnostic Test</div>
+            <div class="description" *ngFor="let item of diagnosticTest">{{item}}</div>
+        </div>
+        <div *ngIf="isprescriptionRequired"> 
+            <div class="title">Prescription</div>
+            <div class="description" *ngFor="let item of prescription">{{item}}</div>
+        </div>
+        <div *ngIf="isadviceListRequired">
+            <div class="title">General Advice</div>
+            <div class="description" *ngFor="let item of adviceList">{{item}}</div>
+        </div>
+    
+        <div class="footer">
+            <div class="disclaimer">
+                <p>Disclaimer: The prescription has been issued based on your inputs during chat/call with the doctor. In case of emergency please visit a nearby hospital</p>
+            </div>
+            <div class="footerText">
+                <div></div>
+                <div>Page 1</div>
+                <div  style="    display: flex;
+                align-items: center;">
+                    <div>Powered by</div>
+                    <div> <img src="../../assets/mfine_logo.png"  style="height: 73px;"/></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-print-none mt-4 btns">
+    <div>
+        <button class="btn" [routerLink]="'/'" >Cancel</button>
+        <button class="btn btn-primary" (click)="clickToCapture()" style="margin: 5px;">Download Image</button> 
+    </div>
+</div>
+<div id="download">
+    <img #canvas>
+    <a #downloadLink></a>
+</div>
+<div>
+    <div class="eachRow">
+        <label for="patientName">Patient Name :</label>
+        <input [(ngModel)]="patientName" id="patientName" required>
+    </div>
+    <div class="eachRow">
+        <label for="doctorName">Doctor Name :</label>
+        <input [(ngModel)]="doctorName" id="doctorName" required>
+    </div>
+    <div class="eachRow">
+        <label for="age">Age:</label>
+        <input [(ngModel)]="age" id="age" required>
+    </div>
+    <div class="eachRow">
+        <label for="gender">Gender :</label>
+        <input [(ngModel)]="gender" id="gender" required>
+    </div>
+    <div class="eachRow">
+        <label for="date">Date :</label>
+        <input [(ngModel)]="date" id="date" required>
+    </div>
+    <div>
+        <p>select required sections</p>
+        <div style="    font-size: 24px;
+        display: flex;
+        justify-content: space-around;">
+            <input type="checkbox" [(ngModel)]="isChiefComplaintsRequired"  />chiefComplaints
+            <input type="checkbox" [(ngModel)]="isallergiesRequired"  />allergies
+            <input type="checkbox" [(ngModel)]="isdiagnosisRequired"  />diagnosis
+            <input type="checkbox" [(ngModel)]="isdiagnosticTestRequired"  />diagnosticTest
+            <input type="checkbox" [(ngModel)]="isprescriptionRequired"  />prescription
+            <input type="checkbox" [(ngModel)]="isadviceListRequired"  />adviceList
+        </div>
+    </div>
+    <div>
+        <label>Add chief complains</label>
+        <input type="text" [(ngModel)]="presValue" />
+        <button (click)="addPrescription()">Add Prescription</button>
+        <button (click)="clearPrescription()">Clear Prescription</button>
+    </div>
+</div>
