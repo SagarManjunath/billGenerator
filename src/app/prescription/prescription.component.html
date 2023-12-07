@@ -49,7 +49,11 @@
             <div class="title">General Advice</div>
             <div class="description" *ngFor="let item of adviceList">{{item}}</div>
         </div>
-    
+        <div style="margin-top: 10px;">
+            <div style="font-weight: bold;">{{doctorName}}</div>
+            <div>Registration No: {{doctorRegNo}}</div>
+        </div>
+           
         <div class="footer">
             <div class="disclaimer">
                 <p>Disclaimer: The prescription has been issued based on your inputs during chat/call with the doctor. In case of emergency please visit a nearby hospital</p>
@@ -86,6 +90,10 @@
         <input [(ngModel)]="doctorName" id="doctorName" required>
     </div>
     <div class="eachRow">
+        <label for="doctorRegNo">Doctor Reg No :</label>
+        <input [(ngModel)]="doctorRegNo" id="doctorRegNo" required>
+    </div>
+    <div class="eachRow">
         <label for="age">Age:</label>
         <input [(ngModel)]="age" id="age" required>
     </div>
@@ -110,10 +118,40 @@
             <input type="checkbox" [(ngModel)]="isadviceListRequired"  />adviceList
         </div>
     </div>
-    <div>
+    <div class="eachDiv">
         <label>Add chief complains</label>
         <input type="text" [(ngModel)]="presValue" />
-        <button (click)="addPrescription()">Add Prescription</button>
-        <button (click)="clearPrescription()">Clear Prescription</button>
+        <button (click)="addPrescription('complaints')">Add Prescription</button>
+        <button (click)="clearPrescription('complaints')">Clear Prescription</button>
+    </div>
+    <div class="eachDiv">
+        <label>Add Allergies</label>
+        <input type="text" [(ngModel)]="presValue" />
+        <button (click)="addPrescription('allergies')">Add Allergies</button>
+        <button (click)="clearPrescription('allergies')">Clear Allergies</button>
+    </div>
+    <div class="eachDiv">
+        <label>Add diagnosis</label>
+        <input type="text" [(ngModel)]="presValue" />
+        <button (click)="addPrescription('diagnosis')">Add diagnosis</button>
+        <button (click)="clearPrescription('diagnosis')">Clear diagnosis</button>
+    </div>
+    <div class="eachDiv">
+        <label>Add diagnoTest</label>
+        <input type="text" [(ngModel)]="presValue" />
+        <button (click)="addPrescription('diagnoTest')">Add diagnoTest</button>
+        <button (click)="clearPrescription('diagnoTest')">Clear diagnoTest</button>
+    </div>
+    <div class="eachDiv">
+        <label>Add prescription</label>
+        <input type="text" [(ngModel)]="presValue" />
+        <button (click)="addPrescription('prescription')">Add prescription</button>
+        <button (click)="clearPrescription('prescription')">Clear prescription</button>
+    </div>
+    <div class="eachDiv">
+        <label>Add advice</label>
+        <input type="text" [(ngModel)]="presValue" />
+        <button (click)="addPrescription('advice')">Add advice</button>
+        <button (click)="clearPrescription('advice')">Clear advice</button>
     </div>
 </div>

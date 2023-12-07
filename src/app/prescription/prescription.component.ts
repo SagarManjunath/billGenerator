@@ -12,6 +12,7 @@ export class PrescriptionComponent implements OnInit {
   gender = 'Male';
   date = '19 Nov 2023';
   doctorName ='Dr.Reshma';
+  doctorRegNo ='94223';
   chiefComplaints: string[] =[];
   allergies :string[] =[];
   diagnosis :string[] =[];
@@ -68,10 +69,55 @@ export class PrescriptionComponent implements OnInit {
     });
   }
 
-  addPrescription(){
-    this.prescription.push(this.presValue);
+  addPrescription(type:string){
+    switch (type) {
+      case 'complaints':
+        this.chiefComplaints.push(this.presValue);
+        break;
+
+      case 'allergies':
+        this.allergies.push(this.presValue);
+        break;
+
+      case 'diagnosis':
+        this.diagnosis.push(this.presValue);
+        break;
+
+      case 'diagnoTest':
+        this.diagnosticTest.push(this.presValue);
+        break;
+
+      case 'prescription':
+        this.prescription.push(this.presValue);
+        break;
+
+      case 'advice':
+        this.adviceList.push(this.presValue);
+        break;
+    }
+    
   }
-  clearPrescription(){
-    this.prescription = [];
+  clearPrescription(type:string){
+     switch (type) {
+       case 'complaints':
+         this.chiefComplaints = [];
+         break;
+       case 'allergies':
+         this.allergies = [];
+         break;
+       case 'diagnosis':
+         this.diagnosis = [];
+         break;
+       case 'diagnoTest':
+         this.diagnosticTest = [];
+         break;
+       case 'prescription':
+         this.prescription = [];
+         break;
+       case 'advice':
+         this.adviceList = [];
+         break;
+     }
+    
   }
 }

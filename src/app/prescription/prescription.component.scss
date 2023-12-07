@@ -44,3 +44,10 @@
 label{
     width: 10%;
 }
+.eachDiv{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    text-wrap: nowrap;
+    padding: 10px;
+}
