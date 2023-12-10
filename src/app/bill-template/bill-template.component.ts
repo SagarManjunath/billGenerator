@@ -3,12 +3,15 @@ import { DataService } from '../data.service';
 import jspdf, {jsPDF} from 'jspdf';
 //import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import numWords from 'num-words';
 @Component({
   selector: 'app-bill-template',
   templateUrl: './bill-template.component.html',
   styleUrls: ['./bill-template.component.scss']
 })
 export class BillTemplateComponent implements OnInit {
+
+amountInWords:string;
 @ViewChild("couponPage", { static: true }) couponPage: ElementRef;
 @ViewChild("screen") screen: ElementRef;
 @ViewChild("canvas") canvas: ElementRef;
@@ -19,7 +22,10 @@ public billData:any;
   ngOnInit(): void {
     this.dataService.getBill().subscribe((bill) =>{
       this.billData = bill['bill'];
+      this.amountInWords = numWords(this.billData.totalAmount);
+      console.log(this.amountInWords);
     })
+  
   //   this.billData = {
   //     "companyname": "Gowri Tours & Travels",
   //     "companyAddress": "#29,11th Cross, Lakshmayya block , Ganaganagar, Bangalore",
@@ -50,7 +56,7 @@ public billData:any;
   //     "extraKMSCharges":20
   // }
   }
-
+ 
   openPDF(): void {
     const DATA = this.couponPage.nativeElement;
     const doc: jsPDF = new jsPDF("p", "pt", "a2");  
